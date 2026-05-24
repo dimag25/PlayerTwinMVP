@@ -1,0 +1,22 @@
+{
+  "name": "player-twin-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Player Twin staging/preview demo server.",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "check": "node --check server.mjs && node --check app.js && node --check platform-console.js",
+    "smoke": "node scripts/smoke-preview.mjs",
+    "migrate": "node scripts/migrate.mjs",
+    "seed:postgres": "node scripts/seed-postgres.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "jose": "^5.10.0",
+    "pg": "^8.16.3"
+  }
+}

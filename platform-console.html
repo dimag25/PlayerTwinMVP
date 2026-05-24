@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Player Twin Platform Console</title>
+    <link rel="stylesheet" href="platform-console.css" />
+  </head>
+  <body>
+    <main class="console-shell">
+      <header class="console-header">
+        <div>
+          <p class="eyebrow">Production Foundation</p>
+          <h1>Player Twin Platform Console</h1>
+          <p>Test role permissions, consent flows, media intents, leaderboard reads, and audit access against the local backend.</p>
+        </div>
+        <a href="/">Open Player App</a>
+      </header>
+
+      <section class="notice">
+        <strong>Local API mode:</strong>
+        run the server at <code>http://127.0.0.1:8888</code>. Buttons use demo bearer tokens and show raw JSON responses for QA.
+      </section>
+
+      <section class="workflow-strip" aria-label="Testing workflow">
+        <div><span>1</span> Pick a role</div>
+        <div><span>2</span> Run an action</div>
+        <div><span>3</span> Compare JSON</div>
+        <div><span>4</span> Check audit</div>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Role Context</p>
+              <h2>Session</h2>
+            </div>
+            <span class="status-pill" id="role-pill">Parent</span>
+          </div>
+          <div class="role-tabs" aria-label="Quick role switch">
+            <button type="button" data-token="demo-player-token">Player</button>
+            <button type="button" data-token="demo-parent-token" class="is-active">Parent</button>
+            <button type="button" data-token="demo-coach-token">Coach</button>
+            <button type="button" data-token="demo-admin-token">Admin</button>
+          </div>
+          <label>
+            Role token
+            <select id="token-select">
+              <option value="demo-player-token">Player</option>
+              <option value="demo-parent-token" selected>Parent</option>
+              <option value="demo-coach-token">Coach</option>
+              <option value="demo-admin-token">Admin</option>
+            </select>
+          </label>
+          <p class="helper-text" id="role-helper">Parent can change child privacy and consent, then inspect the resulting player state.</p>
+          <button id="load-me">Load /me</button>
+          <pre id="me-output"></pre>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Consent & Privacy</p>
+              <h2>Parent Controls</h2>
+            </div>
+          </div>
+          <label>
+            Visibility
+            <select id="visibility-select">
+              <option value="private">Private</option>
+              <option value="leaderboard_alias">Leaderboard alias</option>
+              <option value="team">Team visible</option>
+              <option value="public_portfolio">Public portfolio</option>
+            </select>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="leaderboard-consent" checked />
+            Leaderboard participation
+          </label>
+          <div class="button-row">
+            <button id="save-privacy">Save privacy</button>
+            <button id="grant-performance">Grant performance consent</button>
+            <button class="danger-action" id="withdraw-performance">Withdraw performance consent</button>
+          </div>
+          <pre id="privacy-output"></pre>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Player Data</p>
+              <h2>Performance API</h2>
+            </div>
+          </div>
+          <p class="helper-text">Use the selected token to validate allowed and blocked writes. Parent consent affects performance tracking.</p>
+          <div class="button-row">
+            <button id="submit-match">Submit match</button>
+            <button id="submit-training">Submit training</button>
+            <button class="secondary-action" id="load-player">Load player</button>
+          </div>
+          <pre id="player-output"></pre>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Media</p>
+              <h2>Upload Intent</h2>
+            </div>
+          </div>
+          <label>
+            File
+            <input type="file" id="media-file" accept="image/png,image/jpeg,image/webp,application/pdf,video/mp4" />
+          </label>
+          <label>
+            Category
+            <select id="media-category">
+              <option value="profile_image">Profile image</option>
+              <option value="match_clip">Match clip</option>
+              <option value="achievement_document">Achievement document</option>
+            </select>
+          </label>
+          <button id="upload-media">Create intent and upload</button>
+          <pre id="media-output"></pre>
+        </article>
+
+        <article class="panel wide">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Read Models</p>
+              <h2>Leaderboard and Audit</h2>
+            </div>
+            <span class="status-pill muted">Admin audit auto-switches token temporarily</span>
+          </div>
+          <div class="button-row">
+            <button id="load-leaderboard">Load leaderboard</button>
+            <button class="secondary-action" id="load-audit">Load audit logs as admin</button>
+          </div>
+          <pre id="audit-output"></pre>
+        </article>
+      </section>
+    </main>
+    <script src="platform-console.js"></script>
+  </body>
+</html>

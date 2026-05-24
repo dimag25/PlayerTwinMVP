@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Player Twin</title>
+    <meta name="description" content="Player Twin - כרטיס שחקן לנוער עם בקרת הורים, פרטיות והתקדמות מאומתת." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#view-card">דלג לתוכן</a>
+
+    <div class="app-shell">
+      <header class="hero-header" aria-label="כותרת ראשית">
+        <div class="hero-trust" aria-label="מדדי אמון">
+          <span>בטוח לנוער</span>
+          <span>הורים בשליטה</span>
+          <span>אימות שומר אמון</span>
+          <span>פרטיות בראש</span>
+        </div>
+        <div class="brand-lockup">
+          <p class="eyebrow">Player Twin ★</p>
+          <h1>כרטיס שחקן לנוער</h1>
+          <p>בטוח. מבוקר. מכוון התפתחות.</p>
+        </div>
+      </header>
+
+      <main class="app-grid" id="view-card">
+        <section class="view is-active" data-view="card" aria-labelledby="card-title">
+          <div class="screen-head">
+            <button class="icon-button menu-button" type="button" aria-label="תפריט">☰</button>
+            <div>
+              <p class="eyebrow">הכרטיס שלי</p>
+              <h2 id="card-title">מסך הבית</h2>
+            </div>
+            <button class="icon-button" type="button" data-nav="parent" aria-label="מרכז הורים">⌁</button>
+          </div>
+
+          <article class="profile-card" aria-label="כרטיס שחקן">
+            <div class="card-glow"></div>
+            <div class="rating-stack">
+              <span>OVR</span>
+              <strong id="ovr">84</strong>
+              <small id="region">אזור מרכז</small>
+            </div>
+            <div class="player-identity">
+              <img src="assets/player-avatar.png" alt="איור שחקן כדורגל" />
+              <div>
+                <h3 id="player-name">אורי לוי</h3>
+                <p><span id="player-age">U15</span> · <span id="position">חלוץ מרכזי</span></p>
+              </div>
+            </div>
+            <div class="stat-strip" id="stat-grid"></div>
+            <span class="verified-badge" id="confidence">עצמי + הורה</span>
+          </article>
+
+          <section class="xp-panel" aria-label="התקדמות">
+            <div class="xp-topline">
+              <div>
+                <span>XP</span>
+                <strong id="level-label">רמה 12</strong>
+              </div>
+              <strong id="xp-label">2,350 / 3,000</strong>
+            </div>
+            <div class="xp-track"><span id="xp-bar"></span></div>
+            <div class="progress-strip">
+              <div><span>רצף פעילות</span><strong id="streak">12 🔥</strong></div>
+              <div><span>השבוע</span><strong id="weekly-gain">+311 XP</strong></div>
+              <div><span>מיקוד</span><strong>סיומת</strong></div>
+            </div>
+          </section>
+
+          <section class="primary-action-panel">
+            <button class="primary-button update-activity-button" type="button" data-open-update>עדכן פעילות ⚽</button>
+            <div class="safety-row">
+              <span class="safe-dot"></span>
+              <strong id="guardian-status">הכל מאושר</strong>
+              <span>סטטוס הורים</span>
+            </div>
+          </section>
+
+          <section class="recommendation-panel" aria-label="המלצה שבועית">
+            <div>
+              <p class="eyebrow">הפעולה הבאה</p>
+              <h3>עוד אימון סיומת קצר ישפר את SHO</h3>
+              <p>המלצה לפי המיקום, הדקות האחרונות והפער בין כוח לסיומת.</p>
+            </div>
+            <button class="secondary-button" type="button" data-open-update>התחל</button>
+          </section>
+        </section>
+
+        <section class="view" data-view="parent" aria-labelledby="parent-title">
+          <div class="screen-head light">
+            <button class="icon-button" type="button" data-nav="card" aria-label="חזור">›</button>
+            <div>
+              <p class="eyebrow">מרכז בקרת הורים</p>
+              <h2 id="parent-title">הורים בשליטה</h2>
+            </div>
+          </div>
+
+          <article class="parent-child-card">
+            <img src="assets/player-avatar.png" alt="תמונת פרופיל שחקן" />
+            <div>
+              <h3>אורי לוי</h3>
+              <p>גיל 14 · U15</p>
+              <span class="status-pill success">פעיל</span>
+            </div>
+          </article>
+
+          <section class="consent-stack" aria-label="הרשאות והסכמות">
+            <div class="section-head">
+              <h3>נראות והגדרות</h3>
+              <span>ברירת מחדל פרטית</span>
+            </div>
+
+            <label class="consent-card">
+              <input type="checkbox" id="privacy-guardian" checked />
+              <span>
+                <strong>אישור שמירת פעילות</strong>
+                <small>מאפשר לשמור משחקים ואימונים בכרטיס. ללא אישור, עדכונים נחסמים.</small>
+              </span>
+              <em data-consent-label="guardian">מאושר</em>
+            </label>
+
+            <label class="consent-card">
+              <input type="checkbox" id="privacy-visible" />
+              <span>
+                <strong>שם ותמונה בדירוג</strong>
+                <small>כבוי כברירת מחדל. כשהוא כבוי, מוצג כינוי לא מזהה.</small>
+              </span>
+              <em data-consent-label="visible">פרטי</em>
+            </label>
+
+            <label class="consent-card">
+              <input type="checkbox" id="privacy-leaderboard" checked />
+              <span>
+                <strong>השתתפות בדירוג בטוח</strong>
+                <small>מציג שיפור שבועי בלבד עם בקרת פרטיות.</small>
+              </span>
+              <em data-consent-label="leaderboard">פעיל</em>
+            </label>
+
+            <article class="pending-card">
+              <div>
+                <p class="eyebrow">ממתין לאישור</p>
+                <h3>וידאו משחק 18.5.26</h3>
+                <p>לא יוצג מחוץ לחשבון עד אישור הורה.</p>
+              </div>
+              <div class="button-row">
+                <button class="secondary-button" type="button" data-approval="reject">דחה</button>
+                <button class="primary-button" type="button" data-approval="approve">אשר</button>
+              </div>
+            </article>
+          </section>
+
+          <section class="data-activity-panel">
+            <div class="section-head">
+              <h3>גישה אחרונה לנתונים</h3>
+              <span id="storage-status">נשמר מקומית</span>
+            </div>
+            <div id="data-activity-list" class="mini-timeline"></div>
+            <button class="secondary-button full" type="button" id="export-data">ייצוא נתונים</button>
+          </section>
+        </section>
+
+        <section class="view" data-view="progress" aria-labelledby="progress-title">
+          <div class="screen-head">
+            <button class="icon-button" type="button" data-nav="card" aria-label="חזור">›</button>
+            <div>
+              <p class="eyebrow">התקדמות מאומתת</p>
+              <h2 id="progress-title">נתונים אמינים ומעודכנים</h2>
+            </div>
+          </div>
+
+          <section class="trust-score-card">
+            <div class="shield-mark">✓</div>
+            <div>
+              <span>מדד אמינות</span>
+              <strong>92%</strong>
+              <p>מאומת על ידי הורה עם נתוני פעילות עקביים.</p>
+            </div>
+          </section>
+
+          <section class="verified-stats" id="verified-stats"></section>
+
+          <section class="timeline-panel">
+            <div class="section-head">
+              <h3>ציר זמן פעילות</h3>
+              <button class="ghost-link as-button" type="button" data-nav="update">צפה בכל הפעילות</button>
+            </div>
+            <div id="timeline"></div>
+          </section>
+        </section>
+
+        <section class="view" data-view="leaderboard" aria-labelledby="leaderboard-title">
+          <div class="screen-head light">
+            <button class="icon-button" type="button" data-nav="card" aria-label="חזור">›</button>
+            <div>
+              <p class="eyebrow">דירוג בטוח</p>
+              <h2 id="leaderboard-title">תחרותיות עם פרטיות</h2>
+            </div>
+          </div>
+
+          <div class="leaderboard-controls">
+            <label class="privacy-switch">
+              <input type="checkbox" id="alias-mode" checked />
+              <span>הצג אותי בכינוי</span>
+            </label>
+            <select id="leaderboard-region" aria-label="בחירת אזור">
+              <option value="region">אזור מרכז</option>
+              <option value="national">ארצי</option>
+            </select>
+          </div>
+
+          <div class="leaderboard-tabs" role="tablist" aria-label="סוג דירוג">
+            <button class="is-selected" type="button" data-filter="region">שחקנים 🏆</button>
+            <button type="button" data-filter="national">קבוצות</button>
+          </div>
+
+          <div class="leaderboard-list" id="leaderboard-list"></div>
+
+          <article class="privacy-explainer">
+            <strong>דירוג מוצג לכינויים בלבד.</strong>
+            <p>פרטיות השחקנים תמיד שמורה, ואין חיפוש ציבורי או פרופיל פתוח.</p>
+          </article>
+        </section>
+
+        <section class="view" data-view="update" aria-labelledby="activity-title">
+          <div class="screen-head">
+            <button class="icon-button" type="button" data-nav="card" aria-label="חזור">›</button>
+            <div>
+              <p class="eyebrow">פעילות</p>
+              <h2 id="activity-title">יומן התקדמות</h2>
+            </div>
+          </div>
+          <button class="primary-button full" type="button" data-open-update>עדכן פעילות חדשה</button>
+          <div id="recent-activities" class="activity-feed"></div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="ניווט ראשי">
+        <button class="is-active" type="button" data-nav="card" data-icon="card"><span>הכרטיס שלי</span></button>
+        <button type="button" data-nav="parent" data-icon="parent"><span>הורים</span></button>
+        <button type="button" data-nav="update" data-icon="plus"><span>פעילות</span></button>
+        <button type="button" data-nav="progress" data-icon="progress"><span>התקדמות</span></button>
+        <button type="button" data-nav="leaderboard" data-icon="rank"><span>דירוג</span></button>
+      </nav>
+    </div>
+
+    <div class="modal-backdrop" id="modal-backdrop" hidden></div>
+
+    <section class="update-sheet" id="update-sheet" aria-hidden="true" aria-labelledby="update-sheet-title">
+      <form id="activity-form">
+        <div class="sheet-head">
+          <button class="icon-button" type="button" data-close-modal aria-label="סגור">×</button>
+          <div>
+            <p class="eyebrow">עדכון פעילות</p>
+            <h2 id="update-sheet-title">תהליך מהיר ובטוח</h2>
+          </div>
+          <span class="step-pill" id="step-pill">1/3</span>
+        </div>
+
+        <div class="step-progress" aria-hidden="true">
+          <span class="is-active"></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="form-step is-active" data-step="1">
+          <label class="field-label">סוג פעילות</label>
+          <div class="segmented-control">
+            <button class="is-selected" type="button" data-activity-type="match">משחק</button>
+            <button type="button" data-activity-type="training">אימון</button>
+            <button type="button" data-activity-type="other">אחר</button>
+          </div>
+
+          <label class="field-label">תפקיד</label>
+          <select name="role">
+            <option value="striker">חלוץ מרכזי</option>
+            <option value="wing">כנף</option>
+            <option value="mid">קשר התקפי</option>
+          </select>
+        </div>
+
+        <div class="form-step" data-step="2">
+          <div class="metric-input">
+            <label for="minutes">דקות משחק</label>
+            <input id="minutes" name="minutes" type="range" min="15" max="120" value="72" />
+            <strong><span data-range-value="minutes">72</span> דק׳</strong>
+          </div>
+          <div class="metric-input">
+            <label for="impact">השפעה על המשחק</label>
+            <input id="impact" name="impact" type="range" min="1" max="5" value="4" />
+            <strong><span data-range-value="impact">4</span>/5</strong>
+          </div>
+          <div class="quick-numbers">
+            <label>שערים<input type="number" name="goals" min="0" max="12" value="1" /></label>
+            <label>בישולים<input type="number" name="assists" min="0" max="12" value="1" /></label>
+          </div>
+        </div>
+
+        <div class="form-step" data-step="3">
+          <article class="submit-preview">
+            <p class="eyebrow">תצוגת עדכון</p>
+            <h3 id="preview-xp">+108 XP</h3>
+            <p id="preview-copy">הפעילות תעדכן XP, סטטיסטיקת סיומת ויומן פעילות. התוצאה תסומן כדיווח עצמי עם אישור הורה.</p>
+            <div class="preview-badges">
+              <span>כל ההורים מאשרים</span>
+              <span>כינוי בדירוג</span>
+              <span>לא ציבורי</span>
+            </div>
+          </article>
+          <p class="form-error" id="activity-error" role="alert"></p>
+        </div>
+
+        <div class="sheet-actions">
+          <button class="secondary-button" type="button" id="step-back">חזור</button>
+          <button class="primary-button" type="button" id="step-next">המשך</button>
+          <button class="primary-button" type="submit" id="submit-activity" hidden>שמור פעילות</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
