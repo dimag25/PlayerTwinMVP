@@ -10,6 +10,31 @@ This document is the execution checklist for real external staging. It is intent
 - GitHub repository secrets/environment variables
 - HTTPS staging domain
 
+## Required CLIs
+
+Installed on the local machine:
+
+- GitHub CLI: `gh`
+- Auth0 CLI: `auth0`
+- Supabase CLI: project-local npm dev dependency, run with `npx supabase` or `npm run supabase -- <args>`
+
+Authentication commands:
+
+```powershell
+gh auth login
+auth0 login
+npx supabase login
+```
+
+Non-interactive Supabase automation can also use:
+
+```powershell
+$env:SUPABASE_ACCESS_TOKEN='replace-with-token'
+npx supabase projects list
+```
+
+Do not commit access tokens or CLI profile files.
+
 ## GitHub Secrets / Variables
 
 Configure these in the repository or deployment platform. Do not commit real values.
@@ -106,7 +131,7 @@ GitHub Actions runs the same foundation test with a PostgreSQL service container
 
 ## Blocked Until Values Exist
 
-The current machine does not have authenticated `gh`, `auth0`, or `supabase` CLI sessions. Real external setup requires either:
+The current machine has the CLIs installed, but authenticated `gh`, `auth0`, and `supabase` sessions are still required. Real external setup requires either:
 
 - authenticated CLIs installed locally, or
 - platform credentials/secrets configured directly in GitHub/hosting provider UI, or

@@ -11,7 +11,8 @@
     "smoke": "node scripts/smoke-preview.mjs",
     "smoke:staging": "node scripts/staging-foundation-smoke.mjs",
     "migrate": "node scripts/migrate.mjs",
-    "seed:postgres": "node scripts/seed-postgres.mjs"
+    "seed:postgres": "node scripts/seed-postgres.mjs",
+    "supabase": "supabase"
   },
   "engines": {
     "node": ">=20"
@@ -19,5 +20,8 @@
   "dependencies": {
     "jose": "^5.10.0",
     "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "supabase": "^2.101.0"
   }
 }
