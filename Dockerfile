@@ -11,6 +11,8 @@ COPY package-lock.json ./
 RUN npm ci --omit=dev
 
 COPY server.mjs ./
+COPY migrations ./migrations
+COPY scripts ./scripts
 COPY index.html styles.css app.js ./
 COPY platform-console.html platform-console.css platform-console.js ./
 COPY assets ./assets
