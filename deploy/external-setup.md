@@ -35,6 +35,42 @@ npx supabase projects list
 
 Do not commit access tokens or CLI profile files.
 
+## Setup Scripts
+
+After logging in to the CLIs, use these scripts.
+
+Configure Auth0 staging API and SPA:
+
+```powershell
+.\scripts\setup-auth0-staging.ps1 `
+  -Environment staging `
+  -AppBaseUrl "https://staging.example.com" `
+  -ApiAudience "https://api.staging.example.com" `
+  -AuthDomain "https://replace-me.eu.auth0.com"
+```
+
+Configure Supabase link and run staging migration/seed:
+
+```powershell
+.\scripts\setup-supabase-staging.ps1 `
+  -Environment staging `
+  -ProjectRef "replace-with-supabase-project-ref" `
+  -DatabaseUrl "replace-with-managed-postgresql-url" `
+  -RunMigrations `
+  -SeedSyntheticData
+```
+
+Configure GitHub environment variables/secrets from an env file:
+
+```powershell
+.\scripts\setup-github-environment.ps1 `
+  -Environment staging `
+  -Repo dimag25/PlayerTwinMVP `
+  -EnvFile .\deploy\staging.env.example
+```
+
+Production setup scripts are guarded. They require explicit `-ConfirmProduction`, and production seeding is refused. Production should not be configured for real traffic until the documented child-data, consent, privacy, monitoring, incident-response, and security QA blockers are closed.
+
 ## GitHub Secrets / Variables
 
 Configure these in the repository or deployment platform. Do not commit real values.
